@@ -58,14 +58,14 @@ jobs:
 
           df -h
 
-      - name: Update feeds
-        run: |
-          ./scripts/feeds update -a
-          ./scripts/feeds install -a
+      #- name: Update feeds
+      #  run: |
+      #    ./scripts/feeds update -a
+      #    ./scripts/feeds install -a
       
       - name: git clone ttnode
         run: |
-          git clone https://github.com/jerrykuku/luci-app-ttnode.git package/lean/
+          git clone https://github.com/jerrykuku/luci-app-ttnode.git package/lean/luci-app-ttnode
       
       - name: Generate configuration file
         run: |
