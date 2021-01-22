@@ -73,9 +73,10 @@ jobs:
           # 例如:
 
           cat >> .config <<EOF
-          CONFIG_TARGET_IMAGES_GZIP=y
-          CONFIG_KERNEL_BUILD_USER="OpenWrt-CI"
-          CONFIG_KERNEL_BUILD_DOMAIN="Azure"
+          CONFIG_PACKAGE_luci-app-openvpn-server=y
+          CONFIG_PACKAGE_luci-i18n-openvpn-server-zh-cn=y
+          CONFIG_PACKAGE_openvpn-easy-rsa=y
+          CONFIG_PACKAGE_openvpn-openssl=y
           EOF
 
           #
@@ -93,6 +94,7 @@ jobs:
 
       - name: Compile firmware
         run: |
+          make package/lean/luci-app-openvpn-server/compile V=s
           make -j$(nproc) || make -j1 V=s
           echo "======================="
           echo "Space usage:"
